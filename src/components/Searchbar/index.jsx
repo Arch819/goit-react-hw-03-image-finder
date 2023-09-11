@@ -1,0 +1,45 @@
+import { Component } from 'react';
+import { ErrorMessage, Formik} from 'formik';
+import { object, string } from 'yup';
+import { AiOutlineSearch } from 'react-icons/ai';
+
+import { ErrorMessageStyled, Header, SearchForm, SearchFormButton, SearchFormInput } from './Searchbar.styled';
+
+const schema = object().shape({
+  search: string().trim().required('This field is required'),
+});
+const initialValues = {
+  search: '',
+};
+export class Searchbar extends Component {
+  handleSubmit = (value, { resetForm }) => {
+    this.props.onSubmit(value.search);
+    resetForm();
+  };
+  render() {
+    return (
+      <Header>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={schema}
+          onSubmit={this.handleSubmit}
+        >
+          <SearchForm>
+            <SearchFormButton type="submit">
+              <AiOutlineSearch/>
+            </SearchFormButton>
+
+            <SearchFormInput
+              name="search"
+              type="text"
+              autoComplete="off"
+              autoFocus
+              placeholder="Search images and photos"
+            />
+            <ErrorMessage component={ErrorMessageStyled} name="number" />
+          </SearchForm>
+        </Formik>
+      </Header>
+    );
+  }
+}
