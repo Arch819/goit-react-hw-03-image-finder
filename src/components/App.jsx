@@ -35,6 +35,12 @@ export class App extends Component {
   onFirstFetch = () => {
     getImg(this.state.searchValue, this.state.page)
       .then(data => {
+        console.log(data.totalHits);
+        if (data.totalHits < 1) {
+          throw new Error(
+            'Sorry, there are no images matching your search query. Please try again.'
+          );
+        }
         this.setState({
           img: data.hits,
           totalPage: Math.ceil(data.totalHits / 12),
@@ -91,7 +97,7 @@ export class App extends Component {
     const { img, isLoading, error, totalPage, page } = this.state;
     return (
       <ContainerStyled>
-        <Searchbar onSubmit={this.onSubmit} currentPage={{page,totalPage} } />
+        <Searchbar onSubmit={this.onSubmit} currentPage={{ page, totalPage }} />
         {error && <ErrorMessageStyled>{error}</ErrorMessageStyled>}
         <ImageGallery img={img} />
         {isLoading && <Loader />}

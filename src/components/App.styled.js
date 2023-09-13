@@ -6,8 +6,8 @@ export const ContainerStyled = styled('div')({
     flexDirection: 'column',
     alignItems: 'center',
     
-    width: '100%',
-    height: '100%',
+    width: '100vw',
+    height: '100vh',
     paddingTop: '80px',
 });
 
@@ -15,7 +15,7 @@ export const ErrorMessageStyled = styled('p')({
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transform: 'translate(-50%,-50%)',
+    transform: 'translateX(-50%)',
     textAlign: 'center',
     fontSize: '32px',
 })
