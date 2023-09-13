@@ -1,11 +1,10 @@
 import React from 'react';
+import { ModalBoxContent } from './Modal.styled';
 
-export function ReactModal(largeImageURL, tags) {
+export function Modal({imgData: {imgUrl, alt}}) {
   return (
-    <div>
-      <div>
-        <img src={largeImageURL} alt={tags} />
-      </div>
-    </div>
+    <ModalBoxContent>
+      <img src={imgUrl} alt={alt}/>
+    </ModalBoxContent>
   );
 }

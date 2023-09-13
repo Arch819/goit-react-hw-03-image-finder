@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { Form, Field } from 'formik';
 
 export const Header = styled('header')({
+  position: 'fixed',
   top: '0',
   left: '0',
-  position: 'sticky',
+  width: '100%',
   zIndex: '1100',
   display: 'flex',
-  justifyContent: 'center',
+  // justifyContent: 'center',
   alignItems: 'center',
   minHeight: '64px',
   paddingRight: '24px',
@@ -22,8 +23,10 @@ export const Header = styled('header')({
 export const SearchForm = styled(Form)({
   display: 'flex',
   alignItems: 'center',
-  width: 100 % '',
+  width: '100%',
   maxWidth: '600px',
+  marginLeft: '50%',
+  transform: 'translateX(-50%)',
   backgroundColor: '#fff',
   borderRadius: '3px',
   overflow: 'hidden',
@@ -69,4 +72,12 @@ export const ErrorMessageStyled = styled('div')({
   display: 'inline-block',
   fontSize: '12px',
   color: '#955',
+});
+
+export const CurrentPageStyled = styled('button')({
+  background: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  fontSize: '20px',
+  color: '#fefefe',
 });

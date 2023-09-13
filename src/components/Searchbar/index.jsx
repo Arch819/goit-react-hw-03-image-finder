@@ -1,9 +1,17 @@
 import { Component } from 'react';
-import { ErrorMessage, Formik} from 'formik';
+import { animateScroll as scroll } from 'react-scroll';
+
+import { ErrorMessage, Formik } from 'formik';
 import { object, string } from 'yup';
 import { AiOutlineSearch } from 'react-icons/ai';
-
-import { ErrorMessageStyled, Header, SearchForm, SearchFormButton, SearchFormInput } from './Searchbar.styled';
+import {
+  CurrentPageStyled,
+  ErrorMessageStyled,
+  Header,
+  SearchForm,
+  SearchFormButton,
+  SearchFormInput,
+} from './Searchbar.styled';
 
 const schema = object().shape({
   search: string().trim().required('This field is required'),
@@ -17,6 +25,9 @@ export class Searchbar extends Component {
     resetForm();
   };
   render() {
+    const {
+      currentPage: { page, totalPage },
+    } = this.props;
     return (
       <Header>
         <Formik
@@ -26,7 +37,7 @@ export class Searchbar extends Component {
         >
           <SearchForm>
             <SearchFormButton type="submit">
-              <AiOutlineSearch/>
+              <AiOutlineSearch />
             </SearchFormButton>
 
             <SearchFormInput
@@ -39,6 +50,11 @@ export class Searchbar extends Component {
             <ErrorMessage component={ErrorMessageStyled} name="number" />
           </SearchForm>
         </Formik>
+        {totalPage > 1 && (
+          <CurrentPageStyled onClick={() => scroll.scrollToBottom()}>
+            {page}/{totalPage}
+          </CurrentPageStyled>
+        )}
       </Header>
     );
   }

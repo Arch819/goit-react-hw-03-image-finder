@@ -17,13 +17,13 @@ export const getImg = async (searchValue, shownPage) => {
       per_page: 12,
     },
   };
-  return await axios.get(BASE_URL, option).then(response => {
-    const resultSearch = response.data;
-    if (resultSearch.totalHits < 1) {
+  return axios.get(BASE_URL, option).then(({ data }) => {
+    console.log(shownPage);
+    if (data.totalHits < 1) {
       throw new Error(
         'Sorry, there are no images matching your search query. Please try again.'
       );
     }
-    return resultSearch;
+    return data;
   });
 };
