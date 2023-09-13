@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
 export const ButtonStyled = styled('button')({
+  display: 'block',
   padding: '8px 16px',
+  maxWidth: '180px',
+  cursor: 'pointer',
   borderRadius: '2px',
   backgroundColor: '#3f51b5',
   transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
-  textAlign: 'center',
-  display: 'block',
-  color: '#fff',
   border: '0',
+  textAlign: 'center',
   textDecoration: 'none',
-  cursor: 'pointer',
   fontFamily: 'inherit',
   fontSize: '18px',
   lineHeight: '24px',
   fontStyle: 'normal',
   fontWeight: '500',
-  maxWidth: '180px',
+  color: '#fff',
   boxShadow:
     '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)',
 

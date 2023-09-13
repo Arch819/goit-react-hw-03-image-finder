@@ -35,7 +35,6 @@ export class App extends Component {
   onFirstFetch = () => {
     getImg(this.state.searchValue, this.state.page)
       .then(data => {
-        console.log(data.totalHits);
         if (data.totalHits < 1) {
           throw new Error(
             'Sorry, there are no images matching your search query. Please try again.'
@@ -47,7 +46,7 @@ export class App extends Component {
         });
         Notify.success(`Hooray! We found ${data.totalHits} images.`);
       })
-      .catch(error => this.setState({ error: error.message }))
+      .catch(({ message }) => this.setState({ error: message }))
       .finally(() => this.setState({ isLoading: false }));
   };
   onLoadMore = () => {
@@ -65,14 +64,12 @@ export class App extends Component {
   };
 
   onChangePage = () => {
-    console.log(this.state.page);
     this.setState(
       prevState => ({
         page: prevState.page + 1,
         isLoading: true,
       }),
       () => {
-        console.log(this.state.page);
         this.onLoadMore();
       }
     );
